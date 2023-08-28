@@ -1,0 +1,4 @@
+SELECT DISTINCT Score AS Second_Highest_Score
+FROM Student
+ORDER BY Score DESC
+LIMIT 1 OFFSET 1;
