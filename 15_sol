@@ -1,0 +1,7 @@
+SELECT DISTINCT Salary AS "Nth_Highest_Salary"
+FROM Employee E1
+WHERE N = (
+    SELECT COUNT(DISTINCT Salary)
+    FROM Employee E2
+    WHERE E2.Salary >= E1.Salary
+);
