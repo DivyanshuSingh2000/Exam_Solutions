@@ -1,0 +1,17 @@
+WITH Points AS (
+    SELECT X, Y
+    FROM YourTable -- Replace with your table name
+    WHERE X IS NOT NULL AND Y IS NOT NULL
+)
+
+SELECT
+    A.X AS Point1_X,
+    A.Y AS Point1_Y,
+    B.X AS Point2_X,
+    B.Y AS Point2_Y,
+    SQRT((B.X - A.X) * (B.X - A.X) + (B.Y - A.Y) * (B.Y - A.Y)) AS Distance
+FROM Points A
+CROSS JOIN Points B
+WHERE A.X <> B.X OR A.Y <> B.Y
+ORDER BY Distance
+LIMIT 1;
